@@ -1,6 +1,11 @@
 import React, { useState } from 'react';
+import { useLanguage } from '../contexts/LanguageContext';
+import { translations } from '../utils/translations';
 
 export default function Contact() {
+  const { language, isArabic } = useLanguage();
+  const t = translations[language];
+  
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -18,9 +23,8 @@ export default function Contact() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Handle form submission here
     console.log('Form submitted:', formData);
-    alert('Thank you for contacting us! We will get back to you soon.');
+    alert(t.contactSuccessMessage);
   };
 
   return (
@@ -28,152 +32,204 @@ export default function Contact() {
       <div className="container mx-auto px-6 py-12">
         <div className="max-w-6xl mx-auto">
           {/* Header */}
-          <div className="text-center mb-12">
+          <div className={`text-center mb-12 ${isArabic ? 'font-arabic' : ''}`}>
+            <div className="flex justify-center mb-6">
+              <div className="bg-yellow-400 p-4 rounded-full">
+                <svg className="w-12 h-12 text-gray-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+                </svg>
+              </div>
+            </div>
             <h1 className="text-4xl md:text-5xl font-bold text-gray-800 mb-4">
-              Contact Us
+              {t.contactPageTitle}
             </h1>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Ready to embark on your spiritual journey? Get in touch with us and let us help you plan the perfect Hajj or Umrah experience.
+              {t.contactPageDesc}
             </p>
           </div>
 
           <div className="grid lg:grid-cols-2 gap-12">
             {/* Contact Information */}
             <div className="bg-white rounded-lg shadow-lg p-8">
-              <h2 className="text-2xl font-bold text-gray-800 mb-6">Get in Touch</h2>
+              <h2 className={`text-2xl font-bold text-gray-800 mb-6 ${isArabic ? 'font-arabic text-right' : ''}`}>
+                {t.getInTouch}
+              </h2>
               
               <div className="space-y-6">
-                <div className="flex items-start space-x-4">
-                  <div className="bg-yellow-400 p-3 rounded-full">
+                <div className={`flex items-start ${isArabic ? 'flex-row-reverse text-right' : ''} space-x-4`}>
+                  <div className={`bg-yellow-400 p-3 rounded-full flex-shrink-0 ${isArabic ? 'ml-4 mr-0' : 'mr-4 ml-0'}`}>
                     <svg className="w-6 h-6 text-gray-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                     </svg>
                   </div>
-                  <div>
-                    <h3 className="font-semibold text-gray-800">Email</h3>
-                    <p className="text-gray-600">flywell2025@gmail.com</p>
+                  <div className={`flex-1 ${isArabic ? 'text-right' : 'text-left'}`}>
+                    <h3 className={`font-semibold text-gray-800 ${isArabic ? 'font-arabic' : ''}`}>{t.email}</h3>
+                    <p className={`text-gray-600 ${isArabic ? 'font-arabic' : ''}`}>flywell2025@gmail.com</p>
                   </div>
                 </div>
 
-                <div className="flex items-start space-x-4">
-                  <div className="bg-yellow-400 p-3 rounded-full">
+                <div className={`flex items-start ${isArabic ? 'flex-row-reverse text-right' : ''} space-x-4`}>
+                  <div className={`bg-yellow-400 p-3 rounded-full flex-shrink-0 ${isArabic ? 'ml-4 mr-0' : 'mr-4 ml-0'}`}>
                     <svg className="w-6 h-6 text-gray-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                     </svg>
                   </div>
-                  <div>
-                    <h3 className="font-semibold text-gray-800">Phone</h3>
-                    <p className="text-gray-600">+201092007037</p>
+                  <div className={`flex-1 ${isArabic ? 'text-right' : 'text-left'}`}>
+                    <h3 className={`font-semibold text-gray-800 ${isArabic ? 'font-arabic' : ''}`}>{t.phone}</h3>
+                    <p className={`text-gray-600 ${isArabic ? 'font-arabic' : ''}`}>+201092007037</p>
                   </div>
                 </div>
 
-                <div className="flex items-start space-x-4">
-                  <div className="bg-yellow-400 p-3 rounded-full">
+                <div className={`flex items-start ${isArabic ? 'flex-row-reverse text-right' : ''} space-x-4`}>
+                  <div className={`bg-yellow-400 p-3 rounded-full flex-shrink-0 ${isArabic ? 'ml-4 mr-0' : 'mr-4 ml-0'}`}>
                     <svg className="w-6 h-6 text-gray-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                     </svg>
                   </div>
-                  <div>
-                    <h3 className="font-semibold text-gray-800">Response Time</h3>
-                    <p className="text-gray-600">We respond within 24 hours</p>
+                  <div className={`flex-1 ${isArabic ? 'text-right' : 'text-left'}`}>
+                    <h3 className={`font-semibold text-gray-800 ${isArabic ? 'font-arabic' : ''}`}>{t.responseTime}</h3>
+                    <p className={`text-gray-600 ${isArabic ? 'font-arabic' : ''}`}>{t.responseTimeDesc}</p>
                   </div>
                 </div>
               </div>
 
-              <div className="mt-8 p-6 bg-yellow-50 rounded-lg">
-                <h3 className="font-semibold text-gray-800 mb-2">Why Choose FlyWell?</h3>
-                <p className="text-gray-600 text-sm">
-                  Our dedicated team provides tailored packages, seamless planning, and reliable support — helping pilgrims focus on their faith while we handle the details.
+              <div className={`mt-8 p-6 bg-yellow-50 rounded-lg ${isArabic ? 'text-right' : ''}`}>
+                <h3 className={`font-semibold text-gray-800 mb-2 ${isArabic ? 'font-arabic' : ''}`}>
+                  {t.whyChooseFlywell}
+                </h3>
+                <p className={`text-gray-600 text-sm ${isArabic ? 'font-arabic leading-relaxed' : ''}`}>
+                  {t.whyChooseFlywellDesc}
                 </p>
               </div>
             </div>
 
             {/* Contact Form */}
             <div className="bg-white rounded-lg shadow-lg p-8">
-              <h2 className="text-2xl font-bold text-gray-800 mb-6">Send us a Message</h2>
+              <h2 className={`text-2xl font-bold text-gray-800 mb-6 ${isArabic ? 'font-arabic text-right' : ''}`}>
+                {t.sendMessage}
+              </h2>
               
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Full Name *
+                  <label className={`block text-sm font-medium text-gray-700 mb-2 ${isArabic ? 'font-arabic text-right' : ''}`}>
+                    {t.fullName} {t.required}
                   </label>
-                  <input
-                    type="text"
-                    name="name"
-                    required
-                    value={formData.name}
-                    onChange={handleChange}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-yellow-400 focus:border-transparent"
-                    placeholder="Your full name"
-                  />
+                  <div className="relative">
+                    <div className={`absolute inset-y-0 ${isArabic ? 'right-0 pr-3' : 'left-0 pl-3'} flex items-center pointer-events-none`}>
+                      <svg className="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                      </svg>
+                    </div>
+                    <input
+                      type="text"
+                      name="name"
+                      required
+                      value={formData.name}
+                      onChange={handleChange}
+                      className={`w-full ${isArabic ? 'pr-10 pl-4' : 'pl-10 pr-4'} py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-yellow-400 focus:border-transparent ${isArabic ? 'text-right font-arabic' : ''}`}
+                      placeholder={t.yourFullName}
+                    />
+                  </div>
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Email Address *
+                  <label className={`block text-sm font-medium text-gray-700 mb-2 ${isArabic ? 'font-arabic text-right' : ''}`}>
+                    {t.emailAddress} {t.required}
                   </label>
-                  <input
-                    type="email"
-                    name="email"
-                    required
-                    value={formData.email}
-                    onChange={handleChange}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-yellow-400 focus:border-transparent"
-                    placeholder="your@email.com"
-                  />
+                  <div className="relative">
+                    <div className={`absolute inset-y-0 ${isArabic ? 'right-0 pr-3' : 'left-0 pl-3'} flex items-center pointer-events-none`}>
+                      <svg className="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                      </svg>
+                    </div>
+                    <input
+                      type="email"
+                      name="email"
+                      required
+                      value={formData.email}
+                      onChange={handleChange}
+                      className={`w-full ${isArabic ? 'pr-10 pl-4' : 'pl-10 pr-4'} py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-yellow-400 focus:border-transparent ${isArabic ? 'text-right' : ''}`}
+                      placeholder={t.yourEmail}
+                    />
+                  </div>
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Phone Number
+                  <label className={`block text-sm font-medium text-gray-700 mb-2 ${isArabic ? 'font-arabic text-right' : ''}`}>
+                    {t.phoneNumber}
                   </label>
-                  <input
-                    type="tel"
-                    name="phone"
-                    value={formData.phone}
-                    onChange={handleChange}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-yellow-400 focus:border-transparent"
-                    placeholder="+1234567890"
-                  />
+                  <div className="relative">
+                    <div className={`absolute inset-y-0 ${isArabic ? 'right-0 pr-3' : 'left-0 pl-3'} flex items-center pointer-events-none`}>
+                      <svg className="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                      </svg>
+                    </div>
+                    <input
+                      type="tel"
+                      name="phone"
+                      value={formData.phone}
+                      onChange={handleChange}
+                      className={`w-full ${isArabic ? 'pr-10 pl-4' : 'pl-10 pr-4'} py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-yellow-400 focus:border-transparent ${isArabic ? 'text-right' : ''}`}
+                      placeholder={t.phoneNumberPlaceholder}
+                    />
+                  </div>
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Trip Type
+                  <label className={`block text-sm font-medium text-gray-700 mb-2 ${isArabic ? 'font-arabic text-right' : ''}`}>
+                    {t.tripType}
                   </label>
-                  <select
-                    name="tripType"
-                    value={formData.tripType}
-                    onChange={handleChange}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-yellow-400 focus:border-transparent"
-                  >
-                    <option value="umrah">Umrah</option>
-                    <option value="hajj">Hajj</option>
-                    <option value="both">Both Hajj & Umrah</option>
-                    <option value="other">Other</option>
-                  </select>
+                  <div className="relative">
+                    <div className={`absolute inset-y-0 ${isArabic ? 'right-0 pr-3' : 'left-0 pl-3'} flex items-center pointer-events-none`}>
+                      <svg className="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                      </svg>
+                    </div>
+                    <select
+                      name="tripType"
+                      value={formData.tripType}
+                      onChange={handleChange}
+                      className={`w-full ${isArabic ? 'pr-10 pl-4' : 'pl-10 pr-4'} py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-yellow-400 focus:border-transparent ${isArabic ? 'text-right font-arabic' : ''}`}
+                    >
+                      <option value="umrah">{t.umrah}</option>
+                      <option value="hajj">{t.hajj}</option>
+                      <option value="both">{t.hajj} & {t.umrah}</option>
+                      <option value="other">{t.other}</option>
+                    </select>
+                  </div>
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Message *
+                  <label className={`block text-sm font-medium text-gray-700 mb-2 ${isArabic ? 'font-arabic text-right' : ''}`}>
+                    {t.message} {t.required}
                   </label>
-                  <textarea
-                    name="message"
-                    required
-                    value={formData.message}
-                    onChange={handleChange}
-                    rows={4}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-yellow-400 focus:border-transparent"
-                    placeholder="Tell us about your travel plans and any specific requirements..."
-                  />
+                  <div className="relative">
+                    <div className={`absolute top-3 ${isArabic ? 'right-0 pr-3' : 'left-0 pl-3'} pointer-events-none`}>
+                      <svg className="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+                      </svg>
+                    </div>
+                    <textarea
+                      name="message"
+                      required
+                      value={formData.message}
+                      onChange={handleChange}
+                      rows={4}
+                      className={`w-full ${isArabic ? 'pr-10 pl-4' : 'pl-10 pr-4'} py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-yellow-400 focus:border-transparent ${isArabic ? 'text-right font-arabic' : ''}`}
+                      placeholder={t.messagePlaceholder}
+                    />
+                  </div>
                 </div>
 
                 <button
                   type="submit"
-                  className="w-full bg-yellow-400 text-gray-900 py-3 px-6 rounded-lg font-semibold hover:bg-yellow-300 transition duration-200"
+                  className={`w-full bg-yellow-400 text-gray-900 py-3 px-6 rounded-lg font-semibold hover:bg-yellow-300 transition duration-200 flex items-center justify-center ${isArabic ? 'font-arabic flex-row-reverse' : ''}`}
                 >
-                  Send Message
+                  <svg className={`w-5 h-5 ${isArabic ? 'ml-2 mr-0' : 'mr-2 ml-0'}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
+                  </svg>
+                  {t.sendMessage}
                 </button>
               </form>
             </div>

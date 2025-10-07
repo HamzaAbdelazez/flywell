@@ -49,6 +49,9 @@ export default function Footer() {
               <p className={`text-gray-300 ${isArabic ? 'font-arabic' : ''}`}>
                 <span className="font-semibold">{t.phone}:</span> +201092007037
               </p>
+              <p className={`text-gray-300 ${isArabic ? 'font-arabic' : ''}`}>
+                <span className="font-semibold">{t.address}:</span> {t.addressLocation}
+              </p>
             </div>
           </div>
         </div>

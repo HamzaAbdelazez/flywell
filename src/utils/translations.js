@@ -124,6 +124,8 @@ export const translations = {
     getInTouch: 'Get in Touch',
     email: 'Email',
     phone: 'Phone',
+    address: 'Address',
+    addressLocation: 'Cairo, Nasr City',
     responseTime: 'Response Time',
     responseTimeDesc: 'We respond within 24 hours',
     
@@ -277,6 +279,8 @@ export const translations = {
     getInTouch: 'تواصل معنا',
     email: 'البريد الإلكتروني',
     phone: 'الهاتف',
+    address: 'العنوان',
+    addressLocation: 'القاهرة - مدينة نصر',
     responseTime: 'وقت الرد',
     responseTimeDesc: 'نرد خلال 24 ساعة',
     

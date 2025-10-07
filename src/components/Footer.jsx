@@ -9,9 +9,9 @@ export default function Footer() {
   return (
     <footer className="bg-gray-900 text-white py-12">
       <div className="container mx-auto px-6">
-        <div className="grid md:grid-cols-3 gap-8">
+        <div className={`grid md:grid-cols-3 gap-8 ${isArabic ? 'text-right' : ''}`}>
           <div>
-            <div className={`flex items-center space-x-2 mb-4 ${isArabic ? 'flex-row-reverse space-x-reverse' : ''}`}>
+            <div className={`flex items-center mb-4 ${isArabic ? 'flex-row-reverse space-x-reverse space-x-2 justify-end' : 'space-x-2'}`}>
               <img 
                 src="/images/flywell-logo.png" 
                 alt="FlyWell Logo" 
@@ -21,12 +21,12 @@ export default function Footer() {
                 {isArabic ? 'فلاي ويل' : 'FlyWell'}
               </span>
             </div>
-            <p className={`text-gray-300 mb-4 ${isArabic ? 'font-arabic leading-relaxed text-right' : ''}`}>
+            <p className={`text-gray-300 mb-4 ${isArabic ? 'font-arabic leading-relaxed' : ''}`}>
               {t.footerDesc}
             </p>
           </div>
           
-          <div className={isArabic ? 'text-right' : ''}>
+          <div>
             <h3 className={`text-lg font-semibold mb-4 ${isArabic ? 'font-arabic' : ''}`}>
               {t.quickLinks}
             </h3>
@@ -38,7 +38,7 @@ export default function Footer() {
             </ul>
           </div>
           
-          <div className={isArabic ? 'text-right' : ''}>
+          <div>
             <h3 className={`text-lg font-semibold mb-4 ${isArabic ? 'font-arabic' : ''}`}>
               {t.contactInfo}
             </h3>

@@ -35,19 +35,16 @@ export default function BookNow() {
     {
       type: t.umrah,
       duration: t.umrahDuration,
-      price: `${t.startingFrom} $1,200`,
       features: t.umrahFeatures
     },
     {
       type: t.hajj,
       duration: t.hajjDuration,
-      price: `${t.startingFrom} $3,500`,
       features: t.hajjFeatures
     },
     {
       type: t.combined,
       duration: t.combinedDuration,
-      price: `${t.startingFrom} $4,200`,
       features: t.combinedFeatures
     }
   ];
@@ -73,7 +70,6 @@ export default function BookNow() {
                 <div className={`text-center mb-6 ${isArabic ? 'font-arabic' : ''}`}>
                   <h3 className="text-2xl font-bold text-gray-800 mb-2">{pkg.type}</h3>
                   <p className="text-gray-600 mb-2">{pkg.duration}</p>
-                  <p className="text-2xl font-bold text-yellow-600">{pkg.price}</p>
                 </div>
                 <ul className="space-y-3 mb-6">
                   {pkg.features.map((feature, idx) => (

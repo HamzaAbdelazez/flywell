@@ -59,8 +59,6 @@ export const translations = {
     hajjDuration: '14-21 days',
     combinedDuration: '21-30 days',
     
-    startingFrom: 'Starting from',
-    
     umrahFeatures: [
       'Round-trip flights',
       'Hotel accommodation in Makkah & Madinah',
@@ -213,8 +211,6 @@ export const translations = {
     umrahDuration: '7-14 يوم',
     hajjDuration: '14-21 يوم',
     combinedDuration: '21-30 يوم',
-    
-    startingFrom: 'ابتداء من',
     
     umrahFeatures: [
       'طيران ذهاب وإياب',

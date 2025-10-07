@@ -1,8 +1,12 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { useLanguage } from '../contexts/LanguageContext';
+import { translations } from '../utils/translations';
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { language, toggleLanguage, isArabic } = useLanguage();
+  const t = translations[language];
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-sm shadow-sm">
@@ -14,38 +18,53 @@ export default function Header() {
               alt="FlyWell Logo" 
               className="h-10 w-auto"
             />
-            <span className="text-2xl font-bold text-gray-800">FlyWell</span>
+            <span className="text-2xl font-bold text-gray-800">
+              {isArabic ? 'فلاي ويل' : 'FlyWell'}
+            </span>
           </Link>
           
           {/* Desktop Navigation */}
           <nav className="hidden md:flex space-x-8">
             <Link to="/" className="text-gray-700 hover:text-blue-600 transition">
-              Home
+              {t.home}
             </Link>
             <Link to="/about" className="text-gray-700 hover:text-blue-600 transition">
-              About
+              {t.about}
             </Link>
             <Link to="/book" className="text-gray-700 hover:text-blue-600 transition">
-              Book Now
+              {t.bookNow}
             </Link>
             <Link to="/contact" className="text-gray-700 hover:text-blue-600 transition">
-              Contact Us
+              {t.contactUs}
             </Link>
           </nav>
           
           {/* Desktop Buttons */}
-          <div className="hidden md:flex space-x-4">
+          <div className="hidden md:flex items-center space-x-4">
+            {/* Language Toggle */}
+            <button
+              onClick={toggleLanguage}
+              className="flex items-center space-x-2 text-gray-700 hover:text-blue-600 transition"
+            >
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129" />
+              </svg>
+              <span className="text-sm font-medium">
+                {language === 'en' ? 'العربية' : 'English'}
+              </span>
+            </button>
+            
             <Link 
               to="/book" 
               className="bg-yellow-400 text-gray-900 px-4 py-2 rounded-full font-semibold hover:bg-yellow-300 transition"
             >
-              Book Now
+              {t.bookNow}
             </Link>
             <Link 
               to="/contact" 
               className="border border-gray-300 text-gray-700 px-4 py-2 rounded-full font-semibold hover:bg-gray-50 transition"
             >
-              Contact
+              {t.contact}
             </Link>
           </div>
 
@@ -69,29 +88,42 @@ export default function Header() {
                 className="text-gray-700 hover:text-blue-600 transition"
                 onClick={() => setIsMenuOpen(false)}
               >
-                Home
+                {t.home}
               </Link>
               <Link 
                 to="/about" 
                 className="text-gray-700 hover:text-blue-600 transition"
                 onClick={() => setIsMenuOpen(false)}
               >
-                About
+                {t.about}
               </Link>
               <Link 
                 to="/book" 
                 className="text-gray-700 hover:text-blue-600 transition"
                 onClick={() => setIsMenuOpen(false)}
               >
-                Book Now
+                {t.bookNow}
               </Link>
               <Link 
                 to="/contact" 
                 className="text-gray-700 hover:text-blue-600 transition"
                 onClick={() => setIsMenuOpen(false)}
               >
-                Contact Us
+                {t.contactUs}
               </Link>
+              
+              {/* Mobile Language Toggle */}
+              <button
+                onClick={toggleLanguage}
+                className="flex items-center space-x-2 text-gray-700 hover:text-blue-600 transition self-start"
+              >
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129" />
+                </svg>
+                <span className="text-sm font-medium">
+                  {language === 'en' ? 'العربية' : 'English'}
+                </span>
+              </button>
             </nav>
           </div>
         )}
